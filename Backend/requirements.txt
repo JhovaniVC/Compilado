@@ -1,0 +1,14 @@
+Flask
+Flask-SQLAlchemy
+PyMySQL
+secret-key-generator
+SQLAlchemy
+requests
+Flask-Cors
+flask-marshmallow
+marshmallow
+marshmallow-sqlalchemy
+urllib3
+flask_jwt_extended
+cloudinary
+python-dotenv

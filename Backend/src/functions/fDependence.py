@@ -1,0 +1,155 @@
+from ..models import db, Dependences
+
+base = db.session
+
+class dbDependence:
+
+    dep = [{ 
+        "dependence": 'DIF MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.578502437996626',
+        "long": '-88.04547660314498',
+    },
+    { 
+        "dependence": 'DIRECCION DE TURISMO MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.575314',
+        "long": '-88.044821',
+    },
+    { 
+        "dependence": 'DIRECCION DE CULTURA Y RECREACION MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.5836223',
+        "long": '-88.0430042',
+    },
+    { 
+        "dependence": 'DIRECCION DE INGRESOS',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.578377',
+        "long": '-88.046476',
+    },
+    { 
+        "dependence": 'DIRECCION DE DESARROLLO URBANO Y ECOLOGIA',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.575517117638285',
+        "long": '-88.0447604180073',
+    },
+     { 
+        "dependence": 'DIRECCION DE DESARROLLO ECONOMICO',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.58221544481473',
+        "long": '-88.05001688499304',
+    },
+    {   "dependence": 'SECRETARIA GENERAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.57840310157428',
+        "long": '-88.04644000142775',
+    },
+     {   "dependence": 'ARCHIVO MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.57840310157428',
+        "long": '-88.04644000142775',
+    },
+     {   "dependence": 'REGISTRO CIVIL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.57840310157428',
+        "long": '-88.04644000142775',
+    },
+     {   "dependence": 'COORDINACION MUNICIPAL DE PROTECCION CIVIL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.582418326246373',
+        "long": '-88.05022740021622',
+    },
+     {   "dependence": 'DIRECCION DE TRANSITO MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.578365',
+        "long": '-88.046626',
+    },
+     {   "dependence": 'DIRECCION DE OBRAS PUBLICAS',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.57720796700909',
+        "long": '-88.04436473562407',
+    },
+     {   "dependence": 'DIRECCION DE SERVICIOS PUBLICOS MUNICIPALES',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.57720796700909',
+        "long": '-88.04436473562407',
+    },
+     {   "dependence": 'PLANEACION MUNICIPAL',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.577139127115462',
+        "long": '-88.04407267843342',
+    },
+     {   "dependence": 'CENTRO INTEGRAL DE ATENCION A LA MUJER',
+        "dia_inicial": 'Lunes',
+        "dia_final": 'Viernes',
+        "hora_inicial": '8:00 a.m',
+        "hora_final": '3:00 p.m',
+        "lat": '19.5781167',
+        "long": '-88.0547112',
+    }]
+
+    def is_Data(self):
+        if not Dependences.query.all():
+            for item in self.dep:
+                self.saveDapendence(item)
+
+
+    def saveDapendence(self, data):
+        dep = Dependences(
+            dependence = data['dependence'],
+            dia_inicial = data['dia_inicial'],
+            dia_final = data['dia_final'],
+            hora_inicial = data['hora_inicial'],
+            hora_final = data['hora_final'],
+            lat = data['lat'],
+            long = data['long']
+        )
+        base.add(dep)
+        base.commit()
+
+    def finDependence(self, data):
+        return Dependences.query.filter_by(dependence=data).first().id
+
