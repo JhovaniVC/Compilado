@@ -19,5 +19,5 @@ DEV_DB_NAME = 'municipio'
 # PRODUCTION DATABASE SETTINGS (Default)
 DB_HOST = 'dbase'
 DB_USER = 'root'
-DB_PASS = 'H*a260182*Ha'
+DB_PASS = 'root'
 DB_NAME = 'municipio'

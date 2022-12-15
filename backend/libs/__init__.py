@@ -7,7 +7,7 @@ from src.middlewares import verifyAndCreateData
 
 
 
-def create_app(config_name='development'):
+def create_app(config_name='production'):
     pymysql.install_as_MySQLdb()
     app = Flask(__name__)
     app.config.from_object(config[config_name])
